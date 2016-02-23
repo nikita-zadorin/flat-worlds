@@ -1,7 +1,7 @@
 <?php
 header("Content-Type: application/json; encoding=utf-8");
 
-$secret_key = 'uFISJiCGeZ9VauTYOTh2'; // Защищенный ключ приложения
+$secret_key = 'JgAjB3qiAggehi3QigO5'; // Защищенный ключ приложения
 
 $input = $_POST;
 
@@ -27,19 +27,12 @@ if ($sig != md5($str.$secret_key)) {
       // Получение информации о товаре
       $item = $input['item']; // наименование товара
 
-if ($item == 'item1') {
+if ($item == 'second_level') {
         $response['response'] = array(
-          'item_id' => 25,
-          'title' => '300 золотых монет',
-          'photo_url' => 'http://somesite/images/coin.jpg',
+          'item_id' => 100,
+          'title' => 'Уровень 2',
+          'photo_url' => 'http://www.pioner55.890m.com/flat-worlds/icon.png',
           'price' => 5
-        );
-      } elseif ($item == 'item2') {
-        $response['response'] = array(
-          'item_id' => 27,
-          'title' => '500 золотых монет',
-          'photo_url' => 'http://somesite/images/coin.jpg',
-          'price' => 10
         );
       } else {
         $response['error'] = array(
@@ -53,19 +46,12 @@ if ($item == 'item1') {
 case 'get_item_test':
       // Получение информации о товаре в тестовом режиме
       $item = $input['item'];
-      if ($item == 'gold_100new') {
+      if ($item == 'second_level') {
         $response['response'] = array(
           'item_id' => 100,
-          'title' => '100 золотых монет (тестовый режим)',
-          'photo_url' => 'http://www.pioner55.890m.com/img-9594-1.jpg',
+          'title' => 'Уровень 2 (тестовый режим)',
+          'photo_url' => 'http://www.pioner55.890m.com/flat-worlds/icon.png',
           'price' => 5
-        );
-      } elseif ($item == 'item2') {
-        $response['response'] = array(
-          'item_id' => 127,
-          'title' => '500 золотых монет (тестовый режим)',
-          'photo_url' => 'http://somesite/images/coin.jpg',
-          'price' => 10
         );
       } else {
         $response['error'] = array(
