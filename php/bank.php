@@ -1,7 +1,7 @@
-<?php
+﻿<?php
 header("Content-Type: application/json; encoding=utf-8");
 
-$secret_key = 'JgAjB3qiAggehi3QigO5'; // Защищенный ключ приложения
+$secret_key = '================'; // Защищенный ключ приложения
 
 $input = $_POST;
 
