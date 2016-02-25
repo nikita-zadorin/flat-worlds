@@ -1,6 +1,10 @@
 ﻿package {
 
 import flash.display.MovieClip;
+	
+	import flash.display.StageQuality;
+	import flash.net.navigateToURL;
+	import flash.net.URLRequest;
 	import flash.events.Event;	
 	import flash.events.MouseEvent;	
 	import flash.display.Sprite;
@@ -16,8 +20,6 @@ import flash.display.MovieClip;
 	import flash.media.SoundMixer;
 	 
 	public class Main extends MovieClip {
-
-
 
 		//public var element:ElementClass;
 		//public var element2:ElementClass2;
@@ -169,6 +171,7 @@ import flash.display.MovieClip;
 			progress.progMC.c1.prog30_2.visible = false;
 			progress.progMC.c1.prog36_2.visible = false;
 			progress.unmuteBTN.visible = false;
+			startScreen.settingsUI.unmuteBTN.visible = false;
 			
 			for (var n:int = 0; n < 7; n++) {mainArray[n] = [];}
 			for (var m:int = 0; m < 49; m++) {newArray[n] = [];}
@@ -456,6 +459,16 @@ import flash.display.MovieClip;
 			//addEventListener(Event.KeyisDown , clearClick);
 			stage.addEventListener(KeyboardEvent.KEY_DOWN, keyDown);
 			startScreen.StartMenu.PlayBTN.addEventListener(MouseEvent.CLICK, playClick);
+			startScreen.StartMenu.SettingsBTN.addEventListener(MouseEvent.CLICK, settingsClick);
+			startScreen.StartMenu.DevBTN.addEventListener(MouseEvent.CLICK, devClick);
+			startScreen.devUI.closeBTN.addEventListener(MouseEvent.CLICK, closeDev);
+			startScreen.settingsUI.closeBTN.addEventListener(MouseEvent.CLICK, closeSettings);
+			startScreen.devUI.urlBTN.addEventListener(MouseEvent.CLICK, openURL);
+			
+			startScreen.settingsUI.lowBTN.addEventListener(MouseEvent.CLICK, lowQ);
+			startScreen.settingsUI.midBTN.addEventListener(MouseEvent.CLICK, midQ);
+			startScreen.settingsUI.hughBTN.addEventListener(MouseEvent.CLICK, highQ);
+			
 			helper.nextBTN.addEventListener(MouseEvent.CLICK, nextClick);
 			//helper.nextRightBTN.addEventListener(MouseEvent.RIGHT_CLICK, nextRightClick);
 			helper.rollBTN.addEventListener(MouseEvent.MOUSE_DOWN, downHelp);
@@ -506,6 +519,8 @@ import flash.display.MovieClip;
 			}
 			progress.muteBTN.addEventListener(MouseEvent.CLICK, muteClick);
 			progress.unmuteBTN.addEventListener(MouseEvent.CLICK, unmuteClick);
+			startScreen.settingsUI.muteBTN.addEventListener(MouseEvent.CLICK, muteClick);
+			startScreen.settingsUI.unmuteBTN.addEventListener(MouseEvent.CLICK, unmuteClick);
 			levels.level1.addEventListener(MouseEvent.CLICK, level1Click);
 			levels.level2.addEventListener(MouseEvent.CLICK, level2Click);
 			helper.closeHelp.addEventListener(MouseEvent.CLICK, closeHelp);
@@ -537,6 +552,36 @@ import flash.display.MovieClip;
 				coursor.y = event.stageY;
 				event.updateAfterEvent();
 		}*/
+		
+		public function lowQ(e:MouseEvent):void{
+			stage.quality = StageQuality.LOW;
+		}
+		public function midQ(e:MouseEvent):void{
+			stage.quality = StageQuality.MEDIUM;
+		}
+		public function highQ(e:MouseEvent):void{
+			stage.quality = StageQuality.BEST;
+		}
+		
+		public function settingsClick(e:MouseEvent):void{
+			startScreen.settingsUI.visible = true;
+		}
+		
+		public function devClick(e:MouseEvent):void{
+			startScreen.devUI.visible = true;
+		}	
+		
+		public function closeDev(e:MouseEvent):void{
+			startScreen.devUI.visible = false;
+		}
+		
+		public function closeSettings(e:MouseEvent):void{
+			startScreen.settingsUI.visible = false;
+		}
+		
+		public function openURL(e:MouseEvent):void{
+			navigateToURL(new URLRequest("https://vk.com/club114383972"));
+		}	
 		
 		public function okClick(e:MouseEvent):void{
 			inDev.visible = false;
@@ -728,10 +773,12 @@ import flash.display.MovieClip;
 		
 		public function muteClick(e:MouseEvent):void{
 			progress.unmuteBTN.visible = true;
+			startScreen.settingsUI.unmuteBTN.visible = true;
 			SoundMixer.soundTransform = new SoundTransform(0);
 		}
 		
 		public function unmuteClick(e:MouseEvent):void{
+			startScreen.settingsUI.unmuteBTN.visible = false;
 			progress.unmuteBTN.visible = false;
 			SoundMixer.soundTransform = new SoundTransform(1);
 		}
