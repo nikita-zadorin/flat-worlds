@@ -73,10 +73,10 @@ import flash.display.MovieClip;
 		public var MoonOpened = 1;
 		static public var World = 1;
 		
-		static public var opened1 = 1;
-		static public var opened2 = 1;
-		static public var opened3 = 1;
-		static public var opened4 = 1;
+		static public var opened1 = 0;
+		static public var opened2 = 0;
+		static public var opened3 = 0;
+		static public var opened4 = 0;
 		static public var opened5 = 0;
 		static public var opened6 = 0;
 		static public var opened7 = 0;
@@ -483,6 +483,20 @@ import flash.display.MovieClip;
 			progress.progMC.c1.prog9.addEventListener(MouseEvent.ROLL_OVER, progressLevelsHide);
 			progress.progMC.c1.prog27.addEventListener(MouseEvent.ROLL_OUT, progressLevelsShow);
 			progress.progMC.c1.prog9.addEventListener(MouseEvent.ROLL_OUT, progressLevelsShow);
+			
+			progress.buyGoldBTN.addEventListener(MouseEvent.CLICK, ShowBuyGold);
+			progress.buyGoldUI.closeBTN.addEventListener(MouseEvent.CLICK, HideBuyGold);
+			progress.buyGoldUI.buy1000.addEventListener(MouseEvent.CLICK, buyGold1000);
+			progress.buyGoldUI.buy5000.addEventListener(MouseEvent.CLICK, buyGold5000);
+			progress.buyGoldUI.buy10000.addEventListener(MouseEvent.CLICK, buyGold10000);
+			
+			progress.invite.addEventListener(MouseEvent.CLICK, inviteClick);
+			progress.share.addEventListener(MouseEvent.CLICK, shareClick);
+			animation1.invite.addEventListener(MouseEvent.CLICK, inviteClick);
+			animation1.share.addEventListener(MouseEvent.CLICK, shareClick);
+			animation2.invite.addEventListener(MouseEvent.CLICK, inviteClick);
+			animation2.share.addEventListener(MouseEvent.CLICK, shareClick);
+			
 			inDev.okBTN.addEventListener(MouseEvent.CLICK, okClick);
 			if(GameStarted == 1){
 				//trace(GameStarted);
@@ -526,6 +540,38 @@ import flash.display.MovieClip;
 		
 		public function okClick(e:MouseEvent):void{
 			inDev.visible = false;
+		}
+		
+		public function ShowBuyGold(e:MouseEvent):void{
+			progress.buyGoldUI.visible = true;
+		}
+		
+		public function HideBuyGold(e:MouseEvent):void{
+			progress.buyGoldUI.visible = false;
+		}
+		
+		public function buyGold1000(e:MouseEvent):void{
+			goldVar += 1000;
+			// за 1 голос
+		}
+		
+		public function buyGold5000(e:MouseEvent):void{
+			goldVar += 5000;
+			// за 3 голоса
+		}
+		
+		public function buyGold10000(e:MouseEvent):void{
+			goldVar += 10000;
+			// за 5 голосов
+		}
+		
+		
+		public function inviteClick(e:MouseEvent):void{
+			trace("invite");
+		}
+		
+		public function shareClick(e:MouseEvent):void{
+			trace("share");
 		}
 		
 		public function mainMenuClick(e:MouseEvent):void{
@@ -825,7 +871,7 @@ import flash.display.MovieClip;
 			for (var i:int = 0; i < mainArray.length; i++) {
 				for (var j:int = 0; j < mainArray[i].length; j++) {
 					var currentMovie:MovieClip = mainArray[i][j];
-						if(World == 1){		
+						if(World == 1){
 						if(currentMovie.currentFrame == 10){
 								if(progress.progMC.c1.prog1.alpha == 0.5){
 									if(opened1 == 0){
