@@ -9,11 +9,16 @@ package {
 		private var flashVars: Object;
 		private var VK: APIConnection;
         protected var _onPaymentFunction:Function;
-        protected var _secondLevelFunction:Function;
-
+        protected var _local:Boolean = false;
+        private var _getValuesFunction:Function;
 
         public function Bank(stage:Stage) {
 			flashVars = stage.loaderInfo.parameters as Object;
+
+            if (!flashVars["api_id"]) {
+                _local = true;
+                return;
+            }
 			VK  = new APIConnection(flashVars);
 			VK.addEventListener('onOrderSuccess', function(e:CustomEvent): void{
 				if (_onPaymentFunction != null) {
@@ -32,28 +37,82 @@ package {
             });
 		}
 
-        public function pay(f:Function):void {
-            _onPaymentFunction = f;
+        public function buy2level(f:Function):void {
+            pay(f);
+            if (_local) {
+                return;
+            }
             VK.callMethod('showOrderBox', { type:'item',item: "second_level"});
         }
 
-        public function ifSecondLevelIsOpened(f:Function): void {
-            _secondLevelFunction = f;
-            VK.api('storage.get', { key: 'secondlevel'}, storageGetSuccess, onGetError);
+        public function buy1000(f:Function):void {
+            pay(f);
+            if (_local) {
+                return;
+            }
+            VK.callMethod('showOrderBox', { type:'item',item: "buyGold1000"});
         }
 
-        public function openSecondLevel():void {
-            VK.api('storage.set', { key: 'secondlevel', value: 1}, storageSetSuccess, onSetError);
+        public function buy5000(f:Function):void {
+            pay(f);
+            if (_local) {
+                return;
+            }
+            VK.callMethod('showOrderBox', { type:'item',item: "buyGold5000"});
+        }
+
+        public function buy10000(f:Function):void {
+            pay(f);
+            if (_local) {
+                return;
+            }
+            VK.callMethod('showOrderBox', { type:'item',item: "buyGold10000"});
+        }
+
+        private function pay(f:Function):void {
+            _onPaymentFunction = f;
+            if (_local) {
+                _onPaymentFunction(1);
+                return;
+            }
+        }
+
+        public function getValues(names:String, f:Function):void {
+            _getValuesFunction = f;
+            if (_local) {
+                _getValuesFunction([{level2opened:1}]);
+                return;
+            }
+            VK.api('storage.get', { keys: names}, getValuesSuccess, onGetError);
+        }
+
+        private function getValuesSuccess(data: Object): void {
+            if (_getValuesFunction != null) {
+                _getValuesFunction(data);
+            }
+        }
+
+        public function setValue(name:String, value:int):void {
+            if (_local) {
+                return;
+            }
+            VK.api('storage.set', { key: name, value: value}, storageSetSuccess, onSetError);
         }
 
         public function showInviteBox():void {
+            if (_local) {
+                return;
+            }
             VK.callMethod('showInviteBox');
         }
 
-        private function storageGetSuccess(data: Object): void {
-            if (_secondLevelFunction != null) {
-                _secondLevelFunction(data == 1);
+        public function wallPost():void {
+            if (_local) {
+                return;
             }
+            VK.api("wall.Post", {  message:'Flat Worlds - наикрутейшая головоломка',
+                attachments: "photo-114383972_402320831,http://vk.com/app5089228",
+                owner_id:'-' + flashVars["owner_id"]});
         }
 
         private function onGetError (e:*):void {
