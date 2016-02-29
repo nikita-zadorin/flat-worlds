@@ -916,10 +916,10 @@ public class Main extends MovieClip {
     }
 
     public function keyDown(e:KeyboardEvent):void {
-        if(e.keyCode == Keyboard.SPACE && startScreen.currentFrame <= 80){
-            startScreen.gotoAndStop(100);
-            startScreen.alpha = 0;
-        }
+        //if(e.keyCode == Keyboard.SPACE && startScreen.currentFrame <= 80){
+         //   startScreen.gotoAndStop(100);
+         //   startScreen.alpha = 0;
+        //}
     }
 
     public function playClick(e:MouseEvent):void{

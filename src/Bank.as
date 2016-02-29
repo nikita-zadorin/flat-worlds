@@ -1,4 +1,4 @@
-package {
+﻿package {
     import flash.display.Stage;
 	
 	import vk.APIConnection;
@@ -111,7 +111,7 @@ package {
                 return;
             }
             VK.api("wall.Post", {  message:'Flat Worlds - наикрутейшая головоломка',
-                attachments: "photo-114383972_402320831,http://vk.com/app5089228",
+                attachments: "photo-114383972_402379074,http://vk.com/app5089228",
                 owner_id:'-' + flashVars["owner_id"]});
         }
 
