@@ -10,7 +10,7 @@
 		
 		var t = 0;
 		var currentAlpha = 1;
-		var buy = 0;
+		public var buy = 0;
 
 		public function ProgressClass() {
 			addEventListener(Event.ENTER_FRAME, onEnter);
@@ -53,11 +53,11 @@
 			t = 1;
 		}
 		public function helpClick(e:MouseEvent):void {
-			
 				if(Main.goldVar>=100){
 					Main.goldVar -= 100;
 					buy = 1;
 					this.gotoAndPlay(11);
+                    Main.saveProgress(name, parent.name);
 				}else{
 					Main.noMoneyVar = 1;
 				}

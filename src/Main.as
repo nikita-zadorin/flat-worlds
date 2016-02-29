@@ -147,9 +147,9 @@ public class Main extends MovieClip {
     public var radiations = 0;
     public var monsters = 0;
     static public var selected2 = 0;
-    public var level2opened = 0;
-    private static var _bank:Bank;
-    private var _that:Main;
+    public static var level2opened = 0;
+    public static var _bank:Bank;
+    public static var that:Main;
 
     public function setInitialValues():void {
         _bank.getValues("_goldVar,level2opened,opened1,opened2,opened3,opened4,opened5,opened6,opened7,opened8," +
@@ -163,11 +163,37 @@ public class Main extends MovieClip {
             for each (var pair:Object in o) {
                 Main[pair["key"]] = int(pair["value"]);
             }
+            updateProgress();
         });
     }
 
+    private function updateProgress():void {
+        for (var i:int = 1; i < 36; i++) {
+            if (Main["opened" + i] == 1 ){
+                progress.progMC.c1["prog" + i].buy = 1;
+                if(progress.progMC.c1["prog" + i + "_2"]){
+                    progress.progMC.c1["prog" + i + "_2"].buy = 1;
+                }
+            }
+        }
+        for (var j:int = 1; j < 37; j++) {
+            if (Main["opened" + j + "_1"] == 1 ){
+                progress.progMC.c2["prog" + i].buy = 1;
+            }
+        }
+    }
+
+    public static function saveProgress(_name:String, _parent:String):void {
+        var openedName:String = "opened" + _name.slice(4,100);
+        if (_parent == "c2") {
+            openedName += "_1";
+        }
+        Main[openedName] = 1;
+        _bank.setValue(openedName, 1);
+    }
+
     public function Main() {
-        _that = this;
+        that = this;
         _bank = new Bank(stage);
         setInitialValues();
 
