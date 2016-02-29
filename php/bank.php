@@ -1,7 +1,7 @@
 ﻿<?php
 header("Content-Type: application/json; encoding=utf-8");
 
-$secret_key = '================'; // Защищенный ключ приложения
+$secret_key = '=================='; // Защищенный ключ приложения
 
 $input = $_POST;
 
@@ -39,7 +39,7 @@ if ($item == 'second_level') {
                    $response['response'] = array(
                      'item_id' => 1000,
                      'title' => '1000 золотых монет',
-                     'photo_url' => 'http://www.pioner55.890m.com/flat-worlds/icon.png',
+                     'photo_url' => 'http://www.pioner55.890m.com/flat-worlds/icon1000.png',
                      'price' => 1
                    );
                  }
@@ -47,7 +47,7 @@ if ($item == 'second_level') {
                               $response['response'] = array(
                                 'item_id' => 5000,
                                 'title' => '5000 золотых монет',
-                                'photo_url' => 'http://www.pioner55.890m.com/flat-worlds/icon.png',
+                                'photo_url' => 'http://www.pioner55.890m.com/flat-worlds/icon5000.png',
                                 'price' => 3
                               );
                             }
@@ -55,7 +55,7 @@ if ($item == 'second_level') {
                                     $response['response'] = array(
                                       'item_id' => 10000,
                                       'title' => '10 000 золотых монет',
-                                      'photo_url' => 'http://www.pioner55.890m.com/flat-worlds/icon.png',
+                                      'photo_url' => 'http://www.pioner55.890m.com/flat-worlds/icon10000.png',
                                       'price' => 5
                                     );
                                   }
@@ -84,7 +84,7 @@ case 'get_item_test':
               $response['response'] = array(
                 'item_id' => 1000,
                 'title' => '1000 золотых монет (тестовый режим)',
-                'photo_url' => 'http://www.pioner55.890m.com/flat-worlds/icon.png',
+                'photo_url' => 'http://www.pioner55.890m.com/flat-worlds/icon1000.png',
                 'price' => 1
               );
             }
@@ -92,7 +92,7 @@ case 'get_item_test':
                     $response['response'] = array(
                       'item_id' => 5000,
                       'title' => '5000 золотых монет (тестовый режим)',
-                      'photo_url' => 'http://www.pioner55.890m.com/flat-worlds/icon.png',
+                      'photo_url' => 'http://www.pioner55.890m.com/flat-worlds/icon5000.png',
                       'price' => 3
                     );
                   }
@@ -100,7 +100,7 @@ case 'get_item_test':
                           $response['response'] = array(
                             'item_id' => 10000,
                             'title' => '10 000 золотых монет (тестовый режим)',
-                            'photo_url' => 'http://www.pioner55.890m.com/flat-worlds/icon.png',
+                            'photo_url' => 'http://www.pioner55.890m.com/flat-worlds/icon10000.png',
                             'price' => 5
                           );
                         }
