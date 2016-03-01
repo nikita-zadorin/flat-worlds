@@ -45,12 +45,20 @@
             VK.callMethod('showOrderBox', { type:'item',item: "second_level"});
         }
 
-        public function buy1000(f:Function):void {
+        public function buy500(f:Function):void {
             pay(f);
             if (_local) {
                 return;
             }
-            VK.callMethod('showOrderBox', { type:'item',item: "buyGold1000"});
+            VK.callMethod('showOrderBox', { type:'item',item: "buyGold500"});
+        }
+
+        public function buy2000(f:Function):void {
+            pay(f);
+            if (_local) {
+                return;
+            }
+            VK.callMethod('showOrderBox', { type:'item',item: "buyGold2000"});
         }
 
         public function buy5000(f:Function):void {
@@ -59,14 +67,6 @@
                 return;
             }
             VK.callMethod('showOrderBox', { type:'item',item: "buyGold5000"});
-        }
-
-        public function buy10000(f:Function):void {
-            pay(f);
-            if (_local) {
-                return;
-            }
-            VK.callMethod('showOrderBox', { type:'item',item: "buyGold10000"});
         }
 
         private function pay(f:Function):void {
