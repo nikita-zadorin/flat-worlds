@@ -1,7 +1,7 @@
 <?php
 header("Content-Type: application/json; encoding=utf-8");
 
-$secret_key = '=================='; // Защищенный ключ приложения
+$secret_key = '================'; // Защищенный ключ приложения
 
 $input = $_POST;
 
@@ -38,7 +38,7 @@ if ($item == 'second_level') {
       else if ($item == 'buyGold500') {
                    $response['response'] = array(
                      'item_id' => 500,
-                     'title' => ‘500 золотых монет',
+                     'title' => '500 золотых монет',
                      'photo_url' => 'http://www.pioner55.890m.com/flat-worlds/icon500.png',
                      'price' => 1
                    );
@@ -46,7 +46,7 @@ if ($item == 'second_level') {
       else if ($item == 'buyGold2000') {
                               $response['response'] = array(
                                 'item_id' => 2000,
-                                'title' => ‘2000 золотых монет',
+                                'title' => '2000 золотых монет',
                                 'photo_url' => 'http://www.pioner55.890m.com/flat-worlds/icon2000.png',
                                 'price' => 3
                               );
@@ -54,7 +54,7 @@ if ($item == 'second_level') {
       else if ($item == 'buyGold5000') {
                                     $response['response'] = array(
                                       'item_id' => 5000,
-                                      'title' => ‘5 000 золотых монет',
+                                      'title' => '5 000 золотых монет',
                                       'photo_url' => 'http://www.pioner55.890m.com/flat-worlds/icon5000.png',
                                       'price' => 5
                                     );
@@ -83,24 +83,24 @@ case 'get_item_test':
       else if ($item == 'buyGold500') {
               $response['response'] = array(
                 'item_id' => 500,
-                'title' => ‘500 золотых монет (тестовый режим)',
-                'photo_url' => 'http://www.pioner55.890m.com/flat-worlds/icon1000.png',
+                'title' => '500 золотых монет (тестовый режим)',
+                'photo_url' => 'http://www.pioner55.890m.com/flat-worlds/icon500.png',
                 'price' => 1
               );
             }
       else if ($item == 'buyGold2000') {
                     $response['response'] = array(
                       'item_id' => 2000,
-                      'title' => ‘2000 золотых монет (тестовый режим)',
-                      'photo_url' => 'http://www.pioner55.890m.com/flat-worlds/icon5000.png',
+                      'title' => '2000 золотых монет (тестовый режим)',
+                      'photo_url' => 'http://www.pioner55.890m.com/flat-worlds/icon2000.png',
                       'price' => 3
                     );
                   }
       else if ($item == 'buyGold5000') {
                           $response['response'] = array(
                             'item_id' => 5000,
-                            'title' => ‘5 000 золотых монет (тестовый режим)',
-                            'photo_url' => 'http://www.pioner55.890m.com/flat-worlds/icon10000.png',
+                            'title' => '5 000 золотых монет (тестовый режим)',
+                            'photo_url' => 'http://www.pioner55.890m.com/flat-worlds/icon5000.png',
                             'price' => 5
                           );
                         }
