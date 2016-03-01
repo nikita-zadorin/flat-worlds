@@ -530,9 +530,9 @@ public class Main extends MovieClip {
 
         progress.buyGoldBTN.addEventListener(MouseEvent.CLICK, ShowBuyGold);
         progress.buyGoldUI.closeBTN.addEventListener(MouseEvent.CLICK, HideBuyGold);
-        progress.buyGoldUI.buy1000.addEventListener(MouseEvent.CLICK, buyGold1000);
+        progress.buyGoldUI.buy500.addEventListener(MouseEvent.CLICK, buyGold500);
+        progress.buyGoldUI.buy2000.addEventListener(MouseEvent.CLICK, buyGold2000);
         progress.buyGoldUI.buy5000.addEventListener(MouseEvent.CLICK, buyGold5000);
-        progress.buyGoldUI.buy10000.addEventListener(MouseEvent.CLICK, buyGold10000);
 
         progress.invite.addEventListener(MouseEvent.CLICK, inviteClick);
         progress.share.addEventListener(MouseEvent.CLICK, shareClick);
@@ -626,28 +626,28 @@ public class Main extends MovieClip {
         progress.buyGoldUI.visible = false;
     }
 
-    public function buyGold1000(e:MouseEvent):void{
-        _bank.buy1000(function (r:int):void {
+    public function buyGold500(e:MouseEvent):void{
+        _bank.buy500(function (r:int):void {
             if (r == 1) {
-                goldVar += 1000;
+                goldVar += 500;
             }
         });
         // за 1 голос
+    }
+
+    public function buyGold2000(e:MouseEvent):void{
+        _bank.buy2000(function (r:int):void {
+            if (r == 1) {
+                goldVar += 2000;
+            }
+        });
+        // за 3 голоса
     }
 
     public function buyGold5000(e:MouseEvent):void{
         _bank.buy5000(function (r:int):void {
             if (r == 1) {
                 goldVar += 5000;
-            }
-        });
-        // за 3 голоса
-    }
-
-    public function buyGold10000(e:MouseEvent):void{
-        _bank.buy10000(function (r:int):void {
-            if (r == 1) {
-                goldVar += 10000;
             }
         });
         // за 5 голосов

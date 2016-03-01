@@ -39,7 +39,7 @@ if ($item == 'second_level') {
                    $response['response'] = array(
                      'item_id' => 500,
                      'title' => ‘500 золотых монет',
-                     'photo_url' => 'http://www.pioner55.890m.com/flat-worlds/icon1000.png',
+                     'photo_url' => 'http://www.pioner55.890m.com/flat-worlds/icon500.png',
                      'price' => 1
                    );
                  }
@@ -47,7 +47,7 @@ if ($item == 'second_level') {
                               $response['response'] = array(
                                 'item_id' => 2000,
                                 'title' => ‘2000 золотых монет',
-                                'photo_url' => 'http://www.pioner55.890m.com/flat-worlds/icon5000.png',
+                                'photo_url' => 'http://www.pioner55.890m.com/flat-worlds/icon2000.png',
                                 'price' => 3
                               );
                             }
@@ -55,7 +55,7 @@ if ($item == 'second_level') {
                                     $response['response'] = array(
                                       'item_id' => 5000,
                                       'title' => ‘5 000 золотых монет',
-                                      'photo_url' => 'http://www.pioner55.890m.com/flat-worlds/icon10000.png',
+                                      'photo_url' => 'http://www.pioner55.890m.com/flat-worlds/icon5000.png',
                                       'price' => 5
                                     );
                                   }
