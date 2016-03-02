@@ -1447,13 +1447,13 @@ public class Main extends MovieClip {
                 }else if(World == 2){
                     if(currentMovie.currentFrame == 1){//черный
                         opened1_1 = 1;
-                        _bank.setValue("opened1_1",1);
+                     //   _bank.setValue("opened1_1",1);
                         progress.progMC.c2.prog1.alpha = 1;
                         progress.progMC.c2.prog1.v.alpha = 1;
                     }
                     if(currentMovie.currentFrame == 10){ //упав
                         opened2_1 = 1;
-                        _bank.setValue("opened2_1",1);
+                    //    _bank.setValue("opened2_1",1);
                         progress.progMC.c2.prog2.alpha = 1;
                         progress.progMC.c2.prog2.v.alpha = 1;
                     }
