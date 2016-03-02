@@ -654,10 +654,12 @@ public class Main extends MovieClip {
     }
 
     public function inviteClick(e:MouseEvent):void{
+		trace("invite");
         _bank.showInviteBox();
     }
 
     public function shareClick(e:MouseEvent):void{
+		trace("share");
         _bank.wallPost();
     }
 
@@ -882,13 +884,16 @@ public class Main extends MovieClip {
     }
 
     public function level1Click(e:MouseEvent):void {
-        helper.firstHelper.gotoAndPlay(1);
-        levels.gotoAndStop(2);
-        World = 1;
-        helperInGame2.visible = false;
-        createWorld();
+		if(levels.currentFrame == 1){
+			helper.firstHelper.gotoAndPlay(1);
+			levels.gotoAndStop(2);
+			World = 1;
+			helperInGame2.visible = false;
+			createWorld();
+		}
     }
     public function level2Click(e:MouseEvent):void {
+		if(levels.currentFrame == 1){
         if(level2opened == 1){
             helper.firstHelper.gotoAndPlay(1);
             levels.gotoAndStop(2);
@@ -899,6 +904,7 @@ public class Main extends MovieClip {
         }else{
             levels.buyLevel2MC.visible = true;
         }
+		}
     }
 
     public function createWorld():void{
