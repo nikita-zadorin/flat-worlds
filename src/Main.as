@@ -2660,11 +2660,16 @@ public class Main extends MovieClip {
                     dra = 1;
                 }
                 //trace (ork, elf, gnom, men, chu);
-                if(currentMovie.currentFrame == 340 && ork == 1 && elf == 1 && gnom == 1  && men == 1 && chu ==1 && dra ==1){
-                    currentMovie.gotoAndPlay(371);
-                }
             }
         }
+		for (var ii:int = 0; ii < mainArray.length; ii++) {
+            for (var jj:int = 0; jj < mainArray[ii].length; jj++) {
+				 var currentMovie:MovieClip = mainArray[ii][jj];
+				 if(currentMovie.currentFrame == 340 && ork == 1 && elf == 1 && chu == 1 && gnom == 1 && men == 1 && dra == 1){
+                    currentMovie.gotoAndPlay(371);
+                }
+			}
+		}
 
     }
 
