@@ -1,8 +1,7 @@
 ﻿package {
-    import flash.display.Stage;
-	
-	import vk.APIConnection;
-	import vk.events.CustomEvent;
+import flash.display.Stage;
+import vk.APIConnection;
+import vk.events.CustomEvent;
 	
 	public class Bank {
 		
@@ -110,9 +109,10 @@
             if (_local) {
                 return;
             }
+
             VK.api("wall.Post", {  message:'Flat Worlds - наикрутейшая головоломка',
                 attachments: "photo-114383972_402379074,http://vk.com/app5089228",
-                owner_id:'-' + flashVars["owner_id"]});
+                owner_id: flashVars["viewer_id"]});
         }
 
         private function onGetError (e:*):void {
