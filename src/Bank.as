@@ -13,7 +13,6 @@ import vk.events.CustomEvent;
 
         public function Bank(stage:Stage) {
 			flashVars = stage.loaderInfo.parameters as Object;
-
             if (!flashVars["api_id"]) {
                 _local = true;
                 return;
@@ -110,7 +109,7 @@ import vk.events.CustomEvent;
                 return;
             }
 
-            VK.api("wall.Post", {  message:'Flat Worlds - наикрутейшая головоломка',
+            VK.api("wall.post", {  message:'Flat Worlds - наикрутейшая головоломка',
                 attachments: "photo-114383972_402379074,http://vk.com/app5089228",
                 owner_id: flashVars["viewer_id"]});
         }
