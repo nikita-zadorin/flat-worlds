@@ -1,5 +1,7 @@
 ﻿package {
 
+import com.google.analytics.GATracker;
+
 import flash.display.MovieClip;
 import flash.display.StageQuality;
 import flash.net.navigateToURL;
@@ -150,6 +152,7 @@ public class Main extends MovieClip {
     public static var level2opened = 0;
     public static var _bank:Bank;
     public static var that:Main;
+    public var tracker:GATracker;
 
     public function setInitialValues():void {
         _bank.getValues("_goldVar,level2opened,opened1,opened2,opened3,opened4,opened5,opened6,opened7,opened8," +
@@ -195,6 +198,9 @@ public class Main extends MovieClip {
     public function Main() {
         that = this;
         _bank = new Bank(stage);
+        tracker = new GATracker(this, "UA-74821362-1", "AS3", false);
+        tracker.trackPageview("/startGame");
+
         setInitialValues();
 
         progress.progMC.c1.prog7_2.visible = false;
@@ -630,17 +636,21 @@ public class Main extends MovieClip {
         _bank.buy500(function (r:int):void {
             if (r == 1) {
                 goldVar += 500;
+                tracker.trackPageview("/buyGold500");
             }
         });
         // за 1 голос
+        tracker.trackPageview("/tryToBuyGold500");
     }
 
     public function buyGold2000(e:MouseEvent):void{
         _bank.buy2000(function (r:int):void {
             if (r == 1) {
                 goldVar += 2000;
+                tracker.trackPageview("/buyGold2000");
             }
         });
+        tracker.trackPageview("/tryToBuyGold2000");
         // за 3 голоса
     }
 
@@ -648,14 +658,17 @@ public class Main extends MovieClip {
         _bank.buy5000(function (r:int):void {
             if (r == 1) {
                 goldVar += 5000;
+                tracker.trackPageview("/buyGold5000");
             }
         });
         // за 5 голосов
+        tracker.trackPageview("/tryToBuyGold5000");
     }
 
     public function inviteClick(e:MouseEvent):void{
 		trace("invite");
         _bank.showInviteBox();
+        tracker.trackPageview("/inviteFriends");
     }
 
     public function shareClick(e:MouseEvent):void{
