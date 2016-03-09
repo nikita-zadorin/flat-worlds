@@ -200,7 +200,7 @@ public class Main extends MovieClip {
         _bank = new Bank(stage);
         tracker = new GATracker(this, "UA-74821362-1", "AS3", false);
         tracker.trackPageview("/startGame");
-
+        tracker.trackEvent("event", "Game started");
         setInitialValues();
 
         progress.progMC.c1.prog7_2.visible = false;
@@ -602,10 +602,12 @@ public class Main extends MovieClip {
 
     public function settingsClick(e:MouseEvent):void{
         startScreen.settingsUI.visible = true;
+        tracker.trackEvent("clicks", "Show settings");
     }
 
     public function devClick(e:MouseEvent):void{
         startScreen.devUI.visible = true;
+        tracker.trackEvent("clicks", "Show developers");
     }
 
     public function closeDev(e:MouseEvent):void{
@@ -626,6 +628,7 @@ public class Main extends MovieClip {
 
     public function ShowBuyGold(e:MouseEvent):void{
         progress.buyGoldUI.visible = true;
+        tracker.trackEvent("clicks", "Show buy gold store");
     }
 
     public function HideBuyGold(e:MouseEvent):void{
@@ -683,6 +686,7 @@ public class Main extends MovieClip {
         levels.visible = true;
         progress.gotoAndStop(1);
         clearFunc();
+        tracker.trackEvent("clicks", "Main menu");
     }
 
     public function buyLevel2(e:MouseEvent):void{
@@ -833,12 +837,14 @@ public class Main extends MovieClip {
         progress.unmuteBTN.visible = true;
         startScreen.settingsUI.unmuteBTN.visible = true;
         SoundMixer.soundTransform = new SoundTransform(0);
+        tracker.trackEvent("clicks", "Mute");
     }
 
     public function unmuteClick(e:MouseEvent):void{
         startScreen.settingsUI.unmuteBTN.visible = false;
         progress.unmuteBTN.visible = false;
         SoundMixer.soundTransform = new SoundTransform(1);
+        tracker.trackEvent("clicks", "Unmute");
     }
 
     public function closeAni(e:MouseEvent):void{
@@ -906,7 +912,9 @@ public class Main extends MovieClip {
 			World = 1;
 			helperInGame2.visible = false;
 			createWorld();
+            tracker.trackEvent("clicks", "Level 1 selected");
 		}
+
     }
     public function level2Click(e:MouseEvent):void {
 		if(levels.currentFrame == 1){
@@ -917,9 +925,12 @@ public class Main extends MovieClip {
             helperInGame2.visible = true;
             helperInGame.visible = false;
             createWorld();
+            tracker.trackEvent("clicks", "Open Level 2");
         }else{
             levels.buyLevel2MC.visible = true;
+            tracker.trackEvent("clicks", "Show buy Level 2 store");
         }
+            tracker.trackEvent("clicks", "Level 2 selected");
 		}
     }
 
