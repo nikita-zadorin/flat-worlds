@@ -636,21 +636,21 @@ public class Main extends MovieClip {
         _bank.buy500(function (r:int):void {
             if (r == 1) {
                 goldVar += 500;
-                tracker.trackPageview("/buyGold500");
+                tracker.trackEvent("clicks", "Buy Gold 500");
             }
         });
         // за 1 голос
-        tracker.trackPageview("/tryToBuyGold500");
+        tracker.trackEvent("clicks", "Try to buy Gold 500");
     }
 
     public function buyGold2000(e:MouseEvent):void{
         _bank.buy2000(function (r:int):void {
             if (r == 1) {
                 goldVar += 2000;
-                tracker.trackPageview("/buyGold2000");
+                tracker.trackEvent("clicks", "Buy Gold 2000");
             }
         });
-        tracker.trackPageview("/tryToBuyGold2000");
+        tracker.trackEvent("clicks", "Try to buy Gold 2000");
         // за 3 голоса
     }
 
@@ -658,22 +658,23 @@ public class Main extends MovieClip {
         _bank.buy5000(function (r:int):void {
             if (r == 1) {
                 goldVar += 5000;
-                tracker.trackPageview("/buyGold5000");
+                tracker.trackEvent("clicks", "Buy Gold 5000");
             }
         });
         // за 5 голосов
-        tracker.trackPageview("/tryToBuyGold5000");
+        tracker.trackEvent("clicks", "Try to buy Gold 5000");
     }
 
     public function inviteClick(e:MouseEvent):void{
 		trace("invite");
         _bank.showInviteBox();
-        tracker.trackPageview("/inviteFriends");
+        tracker.trackEvent("clicks", "Invite Friends");
     }
 
     public function shareClick(e:MouseEvent):void{
 		trace("share");
         _bank.wallPost();
+        tracker.trackEvent("clicks", "Wall Post");
     }
 
     public function mainMenuClick(e:MouseEvent):void{
@@ -690,8 +691,10 @@ public class Main extends MovieClip {
             if (b) {
                 level2opened = 1;
                 _bank.setValue("level2opened", 1);
+                tracker.trackEvent("clicks", "Buy 2 Level");
             }
         });
+        tracker.trackEvent("clicks", "Try to buy 2 Level");
     }
 
     public function closeBuyLevel2(e:MouseEvent):void{
