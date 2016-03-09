@@ -2717,11 +2717,16 @@ public class Main extends MovieClip {
                 if (currentMovie.currentFrame == 360){
                     gild = 1;
                 }
-                if(currentMovie.currentFrame == 370 && gild ==1){
-                    currentMovie.gotoAndPlay(381);
-                }
             }
         }
+		for (var ii:int = 0; ii < mainArray.length; ii++) {
+            for (var jj:int = 0; jj < mainArray[ii].length; jj++) {
+                var currentMovie:MovieClip = mainArray[ii][jj];
+				if(currentMovie.currentFrame == 370 && gild ==1){
+                    currentMovie.gotoAndPlay(381);
+                }
+			}
+		}
     }
 
     public function check10_1():void {
