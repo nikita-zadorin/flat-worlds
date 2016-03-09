@@ -898,6 +898,7 @@ public class Main extends MovieClip {
     public function closeHelp(e:MouseEvent):void {
         helperInGame.visible = true;
         closeHelpFunc();
+        tracker.trackEvent("clicks", "Close Help");
     }
 
     public function closeHelpFunc():void {
@@ -1950,6 +1951,7 @@ public class Main extends MovieClip {
     public function clearClick(e:MouseEvent):void{
         clearFunc();
         createWorld();
+        tracker.trackEvent("clicks", "Clean world");
     }
 
     public function clearFunc():void{
