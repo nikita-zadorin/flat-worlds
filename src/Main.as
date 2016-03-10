@@ -153,6 +153,7 @@ public class Main extends MovieClip {
     public static var _bank:Bank;
     public static var that:Main;
     public var tracker:GATracker;
+    public var _appEvent:AppEvent;
 
     public function setInitialValues():void {
         _bank.getValues("_goldVar,level2opened,opened1,opened2,opened3,opened4,opened5,opened6,opened7,opened8," +
@@ -198,6 +199,7 @@ public class Main extends MovieClip {
     public function Main() {
         that = this;
         _bank = new Bank(stage);
+        _appEvent = new AppEvent(stage);
         tracker = new GATracker(this, "UA-74821362-1", "AS3", false);
         tracker.trackPageview("/startGame");
         tracker.trackEvent("event", "Game started");
