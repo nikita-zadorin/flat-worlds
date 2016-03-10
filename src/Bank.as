@@ -105,12 +105,27 @@ import vk.events.CustomEvent;
         }
 
         public function wallPost():void {
+            postPhoto("photo-114383972_402379074");
+        }
+        public function elfPost():void {//убежище эльфов 27
+            postPhoto("photo-114383972_403968138");
+        }
+        public function magicianPost():void {//гильдия магов 32
+            postPhoto("photo-114383972_403968149");
+        }
+        public function orcPost():void {//крепость орков 28
+            postPhoto("photo-114383972_403968154");
+        }
+        public function castlePost():void {//замок 18
+            postPhoto("photo-114383972_403968144");
+        }
+
+        public function postPhoto(photo:String):void {
             if (_local) {
                 return;
             }
-
             VK.api("wall.post", {  message:'Flat Worlds - наикрутейшая головоломка',
-                attachments: "photo-114383972_402379074,http://vk.com/app5089228",
+                attachments: photo + ",http://vk.com/app5089228",
                 owner_id: flashVars["viewer_id"]});
         }
 

@@ -1230,6 +1230,10 @@ public class Main extends MovieClip {
                                 _bank.setValue("opened18",1);
                                 plusFunk();
                             }
+                            if (progress.progMC.c1.prog18.v.alpha != 1) {
+                                _bank.castlePost();
+                                tracker.trackEvent("Progress", "Castle");
+                            }
                             progress.progMC.c1.prog18.alpha = 1;
                             progress.progMC.c1.prog18.v.alpha = 1;
                             progress.progMC.c1.prog18.gotoAndPlay(21);
@@ -1366,6 +1370,10 @@ public class Main extends MovieClip {
                                 _bank.setValue("opened27",1);
                                 plusFunk();
                             }
+                            if (progress.progMC.c1.prog27.v.alpha != 1) {
+                                _bank.elfPost();
+                                tracker.trackEvent("Progress", "Refuge of the Elves");
+                            }
                             progress.progMC.c1.prog27.alpha = 1;
                             progress.progMC.c1.prog27.v.alpha = 1;
                             progress.progMC.c1.prog27.gotoAndPlay(21);
@@ -1378,6 +1386,10 @@ public class Main extends MovieClip {
                                 opened28 = 1;
                                 _bank.setValue("opened28",1);
                                 plusFunk();
+                            }
+                            if (progress.progMC.c1.prog28.v.alpha != 1) {
+                                _bank.orcPost();
+                                tracker.trackEvent("Progress", "The fortress of the orcs");
                             }
                             progress.progMC.c1.prog28.alpha = 1;
                             progress.progMC.c1.prog28.v.alpha = 1;
@@ -1433,6 +1445,10 @@ public class Main extends MovieClip {
                                 opened32 = 1;
                                 _bank.setValue("opened32",1);
                                 plusFunk();
+                            }
+                            if ( progress.progMC.c1.prog32.v.alpha != 1) {
+                                _bank.magicianPost();
+                                tracker.trackEvent("Progress", "Mages guild");
                             }
                             progress.progMC.c1.prog32.alpha = 1;
                             progress.progMC.c1.prog32.v.alpha = 1;
