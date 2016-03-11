@@ -10,6 +10,8 @@ import vk.events.CustomEvent;
         protected var _onPaymentFunction:Function;
         protected var _local:Boolean = false;
         private var _getValuesFunction:Function;
+        private var _getValuesErrorFunction:Function;
+        private var _setValueFunction:Function;
 
         public function Bank(stage:Stage) {
 			flashVars = stage.loaderInfo.parameters as Object;
@@ -75,8 +77,9 @@ import vk.events.CustomEvent;
             }
         }
 
-        public function getValues(names:String, f:Function):void {
+        public function getValues(names:String, f:Function, err:Function = null):void {
             _getValuesFunction = f;
+            _getValuesErrorFunction = err;
             if (_local) {
                 _getValuesFunction([{level2opened:1}]);
                 return;
@@ -90,10 +93,17 @@ import vk.events.CustomEvent;
             }
         }
 
-        public function setValue(name:String, value:int):void {
+        private function onGetError (e:*):void {
+            if (_getValuesErrorFunction != null) {
+                _getValuesErrorFunction();
+            }
+        }
+
+        public function setValue(name:String, value:int, f:Function = null):void {
             if (_local) {
                 return;
             }
+            _setValueFunction = f;
             VK.api('storage.set', { key: name, value: value}, storageSetSuccess, onSetError);
         }
 
@@ -129,10 +139,10 @@ import vk.events.CustomEvent;
                 owner_id: flashVars["viewer_id"]});
         }
 
-        private function onGetError (e:*):void {
-        }
-
         private function storageSetSuccess(data: Object): void {
+            if (_setValueFunction != null) {
+                _setValueFunction();
+            }
         }
 
         private function onSetError (e:*):void {

@@ -157,18 +157,23 @@ public class Main extends MovieClip {
 
     public function setInitialValues():void {
         _bank.getValues("_goldVar,level2opened,opened1,opened2,opened3,opened4,opened5,opened6,opened7,opened8," +
-        "opened9,opened10,opened11,opened12,opened13,opened14,opened15,opened16,opened17,opened18,opened19," +
-        "opened20,opened21,opened22,opened23,opened24,opened25,opened26,opened27,opened28,opened29,opened30," +
-        "opened31,opened32,opened33,opened34,opened35," +
-        "opened1_1,opened2_1,opened3_1,opened4_1,opened5_1,opened6_1,opened7_1,opened8_1,opened9_1,opened10_1," +
-        "opened11_1,opened12_1,opened13_1,opened14_1,opened15_1,opened16_1,opened17_1,opened19_1,opened20_1," +
-        "opened21_1,opened22_1,opened23_1,opened24_1,opened25_1,opened26_1,opened27_1,opened28_1,opened29_1," +
-        "opened30_1,opened31_1,opened32_1,opened33_1,opened34_1,opened35_1,opened36_1", function (o:Object):void {
-            for each (var pair:Object in o) {
-                Main[pair["key"]] = int(pair["value"]);
-            }
-            updateProgress();
-        });
+                "opened9,opened10,opened11,opened12,opened13,opened14,opened15,opened16,opened17,opened18,opened19," +
+                "opened20,opened21,opened22,opened23,opened24,opened25,opened26,opened27,opened28,opened29,opened30," +
+                "opened31,opened32,opened33,opened34,opened35," +
+                "opened1_1,opened2_1,opened3_1,opened4_1,opened5_1,opened6_1,opened7_1,opened8_1,opened9_1,opened10_1," +
+                "opened11_1,opened12_1,opened13_1,opened14_1,opened15_1,opened16_1,opened17_1,opened19_1,opened20_1," +
+                "opened21_1,opened22_1,opened23_1,opened24_1,opened25_1,opened26_1,opened27_1,opened28_1,opened29_1," +
+                "opened30_1,opened31_1,opened32_1,opened33_1,opened34_1,opened35_1,opened36_1",
+                function (o:Object):void {
+                    for each (var pair:Object in o) {
+                        Main[pair["key"]] = int(pair["value"]);
+                    }
+                    updateProgress();
+                },
+                function ():void {
+                    setInitialValues();
+                }
+        );
     }
 
     private function updateProgress():void {
@@ -2175,6 +2180,11 @@ public class Main extends MovieClip {
     public static function set goldVar(value:int):void {
         _goldVar = value;
         _bank.setValue("_goldVar", value);
+    }
+
+    public static function setGoldVarWithHandler(value:int, f:Function):void {
+        _goldVar = value;
+        _bank.setValue("_goldVar", value, f);
     }
 
     public function check3_1_1():void { //взрыв
