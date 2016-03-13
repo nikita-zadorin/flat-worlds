@@ -1,7 +1,7 @@
 <?php
 header("Content-Type: application/json; encoding=utf-8");
 
-$secret_key = '================'; // Защищенный ключ приложения
+$secret_key = '==================='; // Защищенный ключ приложения
 
 $input = $_POST;
 
@@ -32,7 +32,7 @@ if ($item == 'second_level') {
           'item_id' => 100,
           'title' => 'Уровень 2',
           'photo_url' => 'http://www.pioner55.890m.com/flat-worlds/icon.png',
-          'price' => 5
+          'price' => 1
         );
       }
       else if ($item == 'buyGold500') {
@@ -77,7 +77,7 @@ case 'get_item_test':
           'item_id' => 100,
           'title' => 'Уровень 2 (тестовый режим)',
           'photo_url' => 'http://www.pioner55.890m.com/flat-worlds/icon.png',
-          'price' => 5
+          'price' => 1
         );
       }
       else if ($item == 'buyGold500') {
