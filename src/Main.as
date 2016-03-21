@@ -546,6 +546,8 @@ public class Main extends MovieClip {
         progress.buyGoldUI.buy500.addEventListener(MouseEvent.CLICK, buyGold500);
         progress.buyGoldUI.buy2000.addEventListener(MouseEvent.CLICK, buyGold2000);
         progress.buyGoldUI.buy5000.addEventListener(MouseEvent.CLICK, buyGold5000);
+		
+		progress.groupBTN.addEventListener(MouseEvent.CLICK, openURL);
 
         progress.invite.addEventListener(MouseEvent.CLICK, inviteClick);
         progress.share.addEventListener(MouseEvent.CLICK, shareClick);
