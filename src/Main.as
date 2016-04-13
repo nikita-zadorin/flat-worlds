@@ -67,7 +67,6 @@ public class Main extends MovieClip {
     var radiaArray:Array = [];
     var monsterArray:Array = [];
 
-    public var MoonOpened = 1;
     static public var World = 1;
 
     static public var opened1 = 0;
@@ -332,10 +331,10 @@ public class Main extends MovieClip {
 
         move2_1();
 
-        if(MoonOpened == 1){
+        if(level2opened == 1){
             levels.level2.alpha = 1;
         }else{
-            levels.level2.alpha = .5;
+            levels.level2.alpha = .3;
         }
 
         if(WinVar == 1){
@@ -343,6 +342,7 @@ public class Main extends MovieClip {
             animation1.visible = true;
             GameStarted = 0;
             WinVar = 0;
+			level2opened = 1;
         }
         if(WinVar == 2){
             inDev.visible = true;
@@ -574,7 +574,6 @@ public class Main extends MovieClip {
         animation2.closeHelp.addEventListener(MouseEvent.CLICK, closeAni);
         select.Left.addEventListener(MouseEvent.MOUSE_UP, changeLeftVar);
         select.Right.addEventListener(MouseEvent.MOUSE_UP, changeRightVar);
-        levels.buyLevel2MC.buyBTN.addEventListener(MouseEvent.CLICK, buyLevel2);
         levels.buyLevel2MC.closeBTN.addEventListener(MouseEvent.CLICK, closeBuyLevel2);
         //progress.progMC.c1.addEventListener(MouseEvent.MOUSE_OVER, progRoll);
         //gameField.addEventListener(MouseEvent.CLICK, progCheck);
@@ -696,18 +695,6 @@ public class Main extends MovieClip {
         progress.gotoAndStop(1);
         clearFunc();
         tracker.trackEvent("clicks", "Main menu");
-    }
-
-    public function buyLevel2(e:MouseEvent):void{
-        levels.buyLevel2MC.visible = false;
-        _bank.buy2level(function (b:Boolean):void {
-            if (b) {
-                level2opened = 1;
-                _bank.setValue("level2opened", 1);
-                tracker.trackEvent("clicks", "Buy 2 Level");
-            }
-        });
-        tracker.trackEvent("clicks", "Try to buy 2 Level");
     }
 
     public function closeBuyLevel2(e:MouseEvent):void{
@@ -928,19 +915,16 @@ public class Main extends MovieClip {
     }
     public function level2Click(e:MouseEvent):void {
 		if(levels.currentFrame == 1){
-        if(level2opened == 1){
-            helper.firstHelper.gotoAndPlay(1);
-            levels.gotoAndStop(2);
-            World = 2;
-            helperInGame2.visible = true;
-            helperInGame.visible = false;
-            createWorld();
-            tracker.trackEvent("clicks", "Open Level 2");
-        }else{
-            levels.buyLevel2MC.visible = true;
-            tracker.trackEvent("clicks", "Show buy Level 2 store");
-        }
-            tracker.trackEvent("clicks", "Level 2 selected");
+			if(level2opened == 1){
+				helper.firstHelper.gotoAndPlay(1);
+				levels.gotoAndStop(2);
+				World = 2;
+				helperInGame2.visible = true;
+				helperInGame.visible = false;
+				createWorld();
+			}else{
+				levels.goLevel1.gotoAndPlay(2);
+			}
 		}
     }
 
