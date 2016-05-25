@@ -343,6 +343,7 @@ public class Main extends MovieClip {
             GameStarted = 0;
             WinVar = 0;
 			level2opened = 1;
+            _bank.setValue("level2opened", 1);
         }
         if(WinVar == 2){
             inDev.visible = true;
